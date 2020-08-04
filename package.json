@@ -11,7 +11,7 @@
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
     "jest-style-matchers": "^0.1.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "md5": "^2.2.1",
     "moment": "^2.24.0"
   },
