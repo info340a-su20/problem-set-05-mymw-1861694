@@ -93,7 +93,8 @@ function renderPaletteRow (colorArray, parent) {
   }
 }
 //renderPaletteRow(COLORS_9.Reds, document.querySelector('main'));
-
+let p = document.querySelector('p');
+p.remove();
 
 /* Define a function `renderPaletteTable()` that takes no arguments and renders 
 a color palette row for each of the palettes in the `COLORS_9` object into the 
