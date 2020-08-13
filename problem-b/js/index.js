@@ -116,7 +116,7 @@ elements. You can select the elements individually or using `querySelectorAll()`
 */
 let passwords = document.querySelectorAll('#passwordInput', '#passwordConfirmInput');
 passwords.forEach(function(passInput) {
-  passInput.addEventListener('input', validatePasswordMatch());
+  passInput.addEventListener('input', validatePasswordMatch;
 });
 
 /* Last you'll need to only enable the "submit" button if the form is valid. Use
