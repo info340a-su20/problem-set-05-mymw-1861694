@@ -114,12 +114,10 @@ function validatePasswordMatch () {
 events that happen on BOTH the `#passwordInput` and `#passwordConfirmInput`
 elements. You can select the elements individually or using `querySelectorAll()`.
 */
-
-/*something wrong*/ 
-let pass1 = document.querySelector('#passwordInput');
-let pass2 = document.querySelector('#passwordConfirmInput');
-pass1.addEventListener('input', validatePasswordMatch());
-pass2.addEventListener('input', validatePasswordMatch());
+let passwords = document.querySelectorAll('#passwordInput', '#passwordConfirmInput');
+passwords.forEach(function(passInput) {
+  passInput.addEventListener('input', validatePasswordMatch());
+});
 
 /* Last you'll need to only enable the "submit" button if the form is valid. Use
 the `querySelectorAll()` method to select all 4 of the <input> elements. Use the
@@ -133,15 +131,17 @@ This should disable the button until all of the fields are valid, but only after
 the user tries to submit once (which is a polite user experience)
 */
 let allElements = document.querySelectorAll('input');
-allElements.forEach(oneElement => {
-  oneElement.addEventListener('input', function () {
-    if (form.wasValidated) {
+allElements.forEach(function(element) {
+  element.addEventListener('input', function () {
+    let form = document.querySelector('form');
+    let button = document.querySelector('button');
+    if (form.classList.contains('was-validated')) {
       button.disabled = true;
     } else {
       button.disabled = false;
     }
   })
-}
+});
 
 
 //Make functions and variables available to tester. DO NOT MODIFY THIS.

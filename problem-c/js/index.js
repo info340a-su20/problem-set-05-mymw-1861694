@@ -22,19 +22,31 @@ let state = {
 //You can test this function by logging out the returned item. You will need to
 //pass it an object representing a single task; you can pass it one of the
 //examples from the state (e.g., `state.taskList[0]`).
-
-
+function createTaskItemElement(task) {
+  let listItem = document.createElement('li');
+  listItem.textContent = task.description;
+  if (task.complete == true) {
+    listItem.classList.add('font-strike');
+  }
+  return listItem;
+}
+//console.log(createTaskItemElement(state.taskList[0]));
 
 //Define a function `renderTaskList()` that will fill in the provided <ol> with 
 //list items (<li>) representing each task in the `state.taskList`. Call your
 //`createTaskItemElement()` function to create each <li> element.
 //Make sure your function removes any previous list content so that only the 
 //current task list is shown after this render call!
-
-
+function renderTaskList() {
+  let orderedList = document.querySelector('ol');
+  orderedList.innerHTML = "";
+  state.taskList.forEach(element => {
+    orderedList.appendChild(createTaskItemElement(element));
+  });
+}
 
 //Call your `renderTaskList()` function to render the initial list of tasks!
-
+renderTaskList();
 
 
 //Define a function `addNewTask()` that will add a new task to the `taskList`
@@ -46,13 +58,25 @@ let state = {
 //it an empty string), and then call `renderTaskList()` to show the updated list.
 //IMPORTANT: this function should _only_ modify the state and call the render 
 //function; it should not interact directly with the DOM!
-
+let currentID = 0; //state
+function addNewTask () {
+  currentID = currentID++;
+  let newTask = {
+    'id': currentID,
+    'description': state.inputtedText.value,
+    'complete': false
+  };
+  state.taskList.push(newTask);
+  state.inputtedText = "";
+  renderTaskList();
+}
 
 
 //To handle user input, add another event listener to the `<input>` element that
 //listens for `'input'` events (from when the user types something into the box).
 //This listener should use an ANONYMOUS callback function to update the state's 
 //`inputtedText` property to have the `value` of the `<input>` element.
+let input = document.querySelect('input');
 
 
 
