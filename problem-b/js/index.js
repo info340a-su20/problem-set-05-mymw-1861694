@@ -114,10 +114,11 @@ function validatePasswordMatch () {
 events that happen on BOTH the `#passwordInput` and `#passwordConfirmInput`
 elements. You can select the elements individually or using `querySelectorAll()`.
 */
-let passwords = document.querySelectorAll('#passwordInput', '#passwordConfirmInput');
-passwords.forEach(function(passInput) {
-  passInput.addEventListener('input', validatePasswordMatch;
-});
+let pass1 = document.querySelector('#passwordInput');
+let pass2 = document.querySelector('#passwordConfirmInput');
+pass1.addEventListener('input', validatePasswordMatch);
+pass2.addEventListener('input', validatePasswordMatch);
+
 
 /* Last you'll need to only enable the "submit" button if the form is valid. Use
 the `querySelectorAll()` method to select all 4 of the <input> elements. Use the
